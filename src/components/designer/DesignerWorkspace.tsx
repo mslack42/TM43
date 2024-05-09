@@ -1,9 +1,12 @@
 "use client";
 import { useEffect, useState } from "react";
 import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";
-import { DesignerContextProvider, useDesigner } from "./DesignerContext";
-import { TileGrid } from "./TileGrid";
-import { DesignerSideboard } from "./DesignerSideboard";
+import {
+  DesignerContextProvider,
+  useDesigner,
+} from "./context/DesignerContext";
+import { LayerGrid } from "./mapspace/LayerGrid";
+import { DesignerSideboard } from "./controls/DesignerSideboard";
 
 export const DesignerWorkspace = () => {
   return (
@@ -41,10 +44,10 @@ function PanZoomWorkspace() {
             maxScale={10}
             initialScale={1}
             limitToBounds={false}
-            initialPositionX={windowDims[0] / 4}
-            initialPositionY={windowDims[1] / 4}
+            initialPositionX={windowDims[0] / 4 - 400}
+            initialPositionY={windowDims[1] / 4 - 400}
             smooth
-            disabled={cursorMode != "Drag"}
+            panning={{ disabled: cursorMode != "Drag" }}
           >
             <TransformComponent
               wrapperStyle={{
@@ -52,7 +55,7 @@ function PanZoomWorkspace() {
                 height: windowDims[1],
               }}
             >
-              <TileGrid />
+              <LayerGrid />
             </TransformComponent>
           </TransformWrapper>
           <DesignerSideboard />

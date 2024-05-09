@@ -1,5 +1,8 @@
 "use client";
 
+import { useDesigner } from "../context/DesignerContext";
+import { usePaintMode } from "../context/PaintModeContext";
+import { usePlaceMode } from "../context/PlaceModeContext";
 import {
   CursorMode,
   CursorModes,
@@ -7,18 +10,12 @@ import {
   ObjectTypes,
   TerrainType,
   TerrainTypes,
-  useDesigner,
-} from "./DesignerContext";
+} from "../types";
 
 export const DesignerSideboard = () => {
-  const {
-    cursorMode,
-    terrainType,
-    objectType,
-    setCursorMode,
-    setObjectType,
-    setTerrainType,
-  } = useDesigner();
+  const { cursorMode, setCursorMode } = useDesigner();
+  const { terrainType, setTerrainType } = usePaintMode();
+  const { objectType, setObjectType } = usePlaceMode();
   return (
     <div className="absolute  top-16 bottom-16 rounded-lg w-24 bg-slate-200 bg-opacity-50">
       <div className="relative w-full h-full overflow-visible">

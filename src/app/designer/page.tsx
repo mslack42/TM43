@@ -1,4 +1,4 @@
-import { DesignerWorkspace } from "./DesignerWorkspace";
+import { DesignerWorkspace } from "../../components/designer/DesignerWorkspace";
 
 export default function DesignerPage() {
   return (
