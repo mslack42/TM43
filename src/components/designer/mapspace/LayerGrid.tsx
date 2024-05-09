@@ -14,7 +14,6 @@ export const LayerGrid = () => {
       className="flex flex-row gap-10 p-96"
       onPointerUp={() => {
         setIsBrushDown(false);
-        unselectObject();
       }}
       onPointerLeave={() => {
         unselectObject();

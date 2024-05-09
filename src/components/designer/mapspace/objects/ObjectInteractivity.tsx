@@ -1,4 +1,5 @@
 "use client";
+import { CursorTileCapture } from "../../common/CursorTileCapture";
 import { useDesigner } from "../../context/DesignerContext";
 import { usePlaceMode } from "../../context/PlaceModeContext";
 import { useSelectMode } from "../../context/SelectModeContext";
@@ -8,40 +9,40 @@ type Props = { coords: XYCoords; layerId: string };
 export const ObjectInteractivity = (props: Props) => {
   const { cursorMode } = useDesigner();
   return (
-    <>
+    <CursorTileCapture cursorTile={[...props.coords, props.layerId]}>
       {cursorMode === "Place" ? (
-        <PlaceMode {...props} />
+        <PlaceMode />
       ) : cursorMode === "Select" ? (
-        <SelectMode {...props} />
+        <SelectMode />
       ) : (
-        <div className="w-full h-full"></div>
+        <></>
       )}
-    </>
+    </CursorTileCapture>
   );
 };
 
-const PlaceMode = ({ coords, layerId }: Props) => {
+const PlaceMode = () => {
   const { placeObject } = usePlaceMode();
   return (
     <div
       className="w-full h-full "
       onPointerDown={() => {
-        placeObject(coords, layerId);
+        placeObject();
       }}
     ></div>
   );
 };
 
-const SelectMode = ({ coords, layerId }: Props) => {
+const SelectMode = () => {
   const { selectObject, deselectObject } = useSelectMode();
   return (
     <div
       className="w-full h-full "
       onPointerDown={() => {
-        selectObject(coords, layerId);
+        selectObject();
       }}
       onPointerUp={() => {
-        deselectObject(coords, layerId);
+        deselectObject();
       }}
     ></div>
   );

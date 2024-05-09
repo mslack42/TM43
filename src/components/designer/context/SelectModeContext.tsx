@@ -9,17 +9,17 @@ import {
 
 type SelectModeContextData = {
   selectedObject: ObjectDefinition | null;
-  selectObject: (coords: XYCoords, gridId: string) => void;
-  deselectObject: (coords: XYCoords, gridId: string) => void;
+  selectObject: () => void;
+  deselectObject: () => void;
   unselectObject: () => void;
 };
 
 const SelectModeContext = createContext<SelectModeContextData>({
   selectedObject: null,
-  selectObject: function (coords: XYCoords, gridId: string): void {
+  selectObject: function (): void {
     throw new Error("Function not implemented.");
   },
-  deselectObject: function (coords: XYCoords, gridId: string): void {
+  deselectObject: function (): void {
     throw new Error("Function not implemented.");
   },
   unselectObject: function (): void {
@@ -33,17 +33,17 @@ export const SelectModeContextProvider = ({ children }: PropsWithChildren) => {
   const [selectedObject, setSelectedObject] = useState<ObjectDefinition | null>(
     null
   );
-  const { mapDefinition, setMapDefinition } = useDesigner();
+  const { mapDefinition, setMapDefinition, cursorTile } = useDesigner();
 
-  const selectObject = (coords: XYCoords, gridId: string) => {
-    if (selectedObject) {
+  const selectObject = () => {
+    if (selectedObject || !cursorTile) {
       return;
     }
     const matchedObjects = mapDefinition.objects.filter(
       (obj) =>
-        obj.position[0] === coords[0] &&
-        obj.position[1] === coords[1] &&
-        obj.gridId === gridId
+        obj.position[0] === cursorTile[0] &&
+        obj.position[1] === cursorTile[1] &&
+        obj.gridId === cursorTile[2]
     );
     if (matchedObjects.length === 0) {
       return;
@@ -63,8 +63,8 @@ export const SelectModeContextProvider = ({ children }: PropsWithChildren) => {
     });
   };
 
-  const deselectObject = (coords: XYCoords, gridId: string) => {
-    if (!selectedObject) {
+  const deselectObject = () => {
+    if (!selectedObject || !cursorTile) {
       return;
     }
     setMapDefinition({
@@ -73,8 +73,8 @@ export const SelectModeContextProvider = ({ children }: PropsWithChildren) => {
         ...mapDefinition.objects,
         {
           ...selectedObject,
-          position: coords,
-          gridId,
+          position: [cursorTile[0], cursorTile[1]],
+          gridId: cursorTile[2],
         },
       ],
     });

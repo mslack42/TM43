@@ -9,7 +9,7 @@ import { ObjectTile } from "./objects/ObjectTile";
 import { TerrainTile } from "./terrain/TerrainTile";
 
 export const Layer = ({ layer }: { layer: GridDefinition }) => {
-  const { mapDefinition, cursorMode } = useDesigner();
+  const { mapDefinition, cursorMode, setCursorTile } = useDesigner();
 
   const objects: (ObjectDefinition | null)[][] = layer.grid.map((r) =>
     r.map((c) => null)
@@ -23,7 +23,7 @@ export const Layer = ({ layer }: { layer: GridDefinition }) => {
   return (
     <div className="bg-white">
       <div className="w-full">{layer.gridId}</div>
-      <div className="relative">
+      <div className="relative" onPointerLeave={() => setCursorTile(null)}>
         <div
           className={
             "flex flex-col " +
@@ -33,12 +33,13 @@ export const Layer = ({ layer }: { layer: GridDefinition }) => {
           {layer.grid.map((r, j) => (
             <div key={j} className="flex flex-row">
               {r.map((c, k) => (
-                <TerrainTile
-                  key={k}
-                  tileDef={c}
-                  tileCoords={[k, j]}
-                  layerId={layer.gridId}
-                />
+                <Fragment key={k}>
+                  <TerrainTile
+                    tileDef={c}
+                    tileCoords={[k, j]}
+                    layerId={layer.gridId}
+                  />
+                </Fragment>
               ))}
             </div>
           ))}

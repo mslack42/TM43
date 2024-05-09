@@ -8,14 +8,14 @@ type PaintModeContextData = {
   setIsBrushDown: (newState: boolean) => void;
   terrainType: TerrainType;
   setTerrainType: (newTerrain: TerrainType) => void;
-  paintTile: (layer: string, coords: XYCoords) => void;
+  paintTile: () => void;
 };
 const PaintModeContext = createContext<PaintModeContextData>({
   isBrushDown: false,
   setIsBrushDown: function (_newState: boolean): void {
     throw new Error("Function not implemented.");
   },
-  paintTile: function (_layer: string, _coords: XYCoords): void {
+  paintTile: function (): void {
     throw new Error("Function not implemented.");
   },
   terrainType: "Ground",
@@ -29,17 +29,20 @@ export const usePaintMode = () => useContext(PaintModeContext);
 export function PaintModeContextProvider({ children }: PropsWithChildren) {
   const [isBrushDown, setIsBrushDown] = useState(false);
   const [terrainType, setTerrainType] = useState<TerrainType>("Ice");
-  const { mapDefinition, setMapDefinition } = useDesigner();
+  const { mapDefinition, setMapDefinition, cursorTile } = useDesigner();
 
-  const paintTile = (layer: string, coords: XYCoords) => {
+  const paintTile = () => {
+    if (!cursorTile) {
+      return;
+    }
     let newMapDef = { ...mapDefinition };
     newMapDef.layers = newMapDef.layers.map((l) => {
-      if (l.gridId !== layer) {
+      if (l.gridId !== cursorTile[2]) {
         return l;
       }
       const newL = { ...l };
-      newL.grid[coords[1]][coords[0]] = {
-        ...newL.grid[coords[1]][coords[0]],
+      newL.grid[cursorTile[1]][cursorTile[0]] = {
+        ...newL.grid[cursorTile[1]][cursorTile[0]],
         terrainType,
       };
       return newL;

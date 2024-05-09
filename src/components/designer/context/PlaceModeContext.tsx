@@ -10,7 +10,7 @@ import {
 type PlaceModeContextData = {
   objectType: ObjectType;
   setObjectType: (newObject: ObjectType) => void;
-  placeObject: (coords: XYCoords, gridId: string) => void;
+  placeObject: () => void;
   selectedObject: ObjectDefinition | null;
   selectObject: (obj: ObjectDefinition) => void;
 };
@@ -20,7 +20,7 @@ const PlaceModeContext = createContext<PlaceModeContextData>({
   setObjectType: function (_newObject: ObjectType): void {
     throw new Error("Function not implemented.");
   },
-  placeObject: function (_coords: XYCoords): void {
+  placeObject: function (): void {
     throw new Error("Function not implemented.");
   },
   selectedObject: null,
@@ -36,17 +36,19 @@ export const PlaceModeContextProvider = ({ children }: PropsWithChildren) => {
   const [selectedObject, setSelectedObject] = useState<ObjectDefinition | null>(
     null
   );
-  const { mapDefinition, setMapDefinition } = useDesigner();
+  const { mapDefinition, setMapDefinition, cursorTile } = useDesigner();
 
-  const placeObject = (coords: XYCoords, gridId: string) => {
-    console.log("placing");
+  const placeObject = () => {
+    if (!cursorTile) {
+      return;
+    }
     const newMapDef: MapDefinition = {
       ...mapDefinition,
       objects: [
         ...mapDefinition.objects,
         {
-          gridId,
-          position: coords,
+          gridId: cursorTile[2],
+          position: [cursorTile[0], cursorTile[1]],
           objectType,
         },
       ],
