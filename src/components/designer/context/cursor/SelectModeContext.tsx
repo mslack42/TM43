@@ -1,7 +1,8 @@
 'use client'
 import { createContext, useContext, PropsWithChildren, useState } from 'react'
-import { ObjectDefinition, useDesigner } from '../DesignerContext'
+import { useDesigner } from '../DesignerContext'
 import { useDesignerCursor } from './DesignerCursorContext'
+import { ObjectDefinition } from '../../types'
 
 type SelectModeContextData = {
   selectedObject: ObjectDefinition | null

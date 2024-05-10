@@ -1,6 +1,5 @@
 'use client'
-import { GridTileDefinition } from '../../context/DesignerContext'
-import { XYLCoords } from '../../types'
+import { GridTileDefinition, XYLCoords } from '../../types'
 import { GridLines } from './GridLines'
 import { TileDisplay } from './TileDisplay'
 import { TileInteractivity } from './TileInteractivity'

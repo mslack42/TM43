@@ -1,5 +1,5 @@
 'use client'
-import { ObjectDefinition } from '../../context/DesignerContext'
+import { ObjectDefinition } from '../../types'
 
 export const ObjectDisplay = ({ object }: { object: ObjectDefinition }) => {
   const getTempContents = (object: ObjectDefinition) => {

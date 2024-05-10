@@ -5,9 +5,10 @@ import {
   DialogFooter,
   DialogHeader,
 } from '../../common/Dialog'
-import { MapDefinition, useDesigner } from '../context/DesignerContext'
+import { useDesigner } from '../context/DesignerContext'
 import { useDesignerDialogs } from '../context/dialog/DesignerDialogContext'
 import { DialogDescription } from '@radix-ui/react-dialog'
+import { MapDefinition } from '../types'
 
 export function ImportDialog() {
   const { setOpenDialog, openDialog } = useDesignerDialogs()

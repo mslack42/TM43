@@ -1,27 +1,9 @@
 'use client'
 import { createContext, useContext, PropsWithChildren, useState } from 'react'
 import { defaultMapDefintion } from './defaultMapDefintion'
-import { TerrainType, ObjectType, XYLCoords } from '../types'
+import { MapDefinition } from '../types'
 import { DesignerCursorContextProvider } from './cursor/DesignerCursorContext'
 import { DesignerDialogProvider } from './dialog/DesignerDialogContext'
-
-export type MapDefinition = {
-  objects: ObjectDefinition[]
-  layers: GridDefinition[]
-}
-export type GridDefinition = {
-  grid: GridTileDefinition[][]
-  gridId: string
-}
-
-export type GridTileDefinition = {
-  terrainType: TerrainType
-}
-
-export type ObjectDefinition = {
-  objectType: ObjectType
-  position: XYLCoords
-}
 
 export type DesignerContextData = {
   mapDefinition: MapDefinition
@@ -32,6 +14,7 @@ export const DesignerContext = createContext<DesignerContextData>({
   mapDefinition: {
     objects: [],
     layers: [],
+    name: '',
   },
   setMapDefinition: function (_newDef: MapDefinition): void {
     throw new Error('Function not implemented.')

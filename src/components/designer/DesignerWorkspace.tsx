@@ -5,7 +5,6 @@ import { DesignerContextProvider } from './context/DesignerContext'
 import { LayerGrid } from './mapspace/LayerGrid'
 import { DesignerSideboard } from './controls/DesignerSideboard'
 import { useDesignerCursor } from './context/cursor/DesignerCursorContext'
-import { useDesignerDialogs } from './context/dialog/DesignerDialogContext'
 
 import { ExportDialog } from './dialog/ExportDialog'
 import { ImportDialog } from './dialog/ImportDialog'

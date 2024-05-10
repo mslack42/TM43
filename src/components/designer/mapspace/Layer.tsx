@@ -1,13 +1,10 @@
 'use client'
 import { Fragment } from 'react'
-import {
-  GridDefinition,
-  ObjectDefinition,
-  useDesigner,
-} from '../context/DesignerContext'
+import { useDesigner } from '../context/DesignerContext'
 import { useDesignerCursor } from '../context/cursor/DesignerCursorContext'
 import { ObjectTile } from './objects/ObjectTile'
 import { TerrainTile } from './terrain/TerrainTile'
+import { GridDefinition, ObjectDefinition } from '../types'
 
 export const Layer = ({ layer }: { layer: GridDefinition }) => {
   const { mapDefinition } = useDesigner()

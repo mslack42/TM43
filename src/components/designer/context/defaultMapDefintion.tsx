@@ -1,5 +1,6 @@
 'use client'
-import { MapDefinition } from './DesignerContext'
+
+import { MapDefinition } from '../types'
 
 export const defaultMapDefintion: MapDefinition = {
   objects: [
@@ -94,4 +95,5 @@ export const defaultMapDefintion: MapDefinition = {
       ],
     },
   ],
+  name: 'testmap',
 }

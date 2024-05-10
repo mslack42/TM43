@@ -1,6 +1,5 @@
 'use client'
-import { ObjectDefinition } from '../../context/DesignerContext'
-import { XYLCoords } from '../../types'
+import { ObjectDefinition, XYLCoords } from '../../types'
 import { ObjectDisplay } from './ObjectDisplay'
 import { ObjectInteractivity } from './ObjectInteractivity'
 

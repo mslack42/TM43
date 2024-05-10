@@ -1,11 +1,7 @@
 'use client'
 import { createContext, useContext, PropsWithChildren, useState } from 'react'
-import { ObjectType } from '../../types'
-import {
-  MapDefinition,
-  ObjectDefinition,
-  useDesigner,
-} from '../DesignerContext'
+import { MapDefinition, ObjectDefinition, ObjectType } from '../../types'
+import { useDesigner } from '../DesignerContext'
 import { useDesignerCursor } from './DesignerCursorContext'
 
 type PlaceModeContextData = {
