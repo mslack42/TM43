@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react'
 import { XYLCoords } from '../types'
-import { useDesignerCursor } from '../context/DesignerCursorContext'
+import { useDesignerCursor } from '../context/cursor/DesignerCursorContext'
 
 type Props = {
   cursorTile: XYLCoords

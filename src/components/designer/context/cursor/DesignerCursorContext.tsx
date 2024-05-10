@@ -1,6 +1,9 @@
 'use client'
 import { createContext, useContext, PropsWithChildren, useState } from 'react'
-import { CursorMode, XYLCoords } from '../types'
+import { CursorMode, XYLCoords } from '../../types'
+import { PaintModeContextProvider } from './PaintModeContext'
+import { PlaceModeContextProvider } from './PlaceModeContext'
+import { SelectModeContextProvider } from './SelectModeContext'
 
 export type CursorContextData = {
   cursorMode: CursorMode
@@ -37,6 +40,12 @@ export function DesignerCursorContextProvider({ children }: PropsWithChildren) {
   }
 
   return (
-    <CursorContext.Provider value={value}>{children}</CursorContext.Provider>
+    <CursorContext.Provider value={value}>
+      <SelectModeContextProvider>
+        <PlaceModeContextProvider>
+          <PaintModeContextProvider>{children}</PaintModeContextProvider>
+        </PlaceModeContextProvider>
+      </SelectModeContextProvider>
+    </CursorContext.Provider>
   )
 }

@@ -1,8 +1,9 @@
 'use client'
 import { useDesigner } from '../context/DesignerContext'
-import { useDesignerCursor } from '../context/DesignerCursorContext'
-import { usePaintMode } from '../context/PaintModeContext'
-import { usePlaceMode } from '../context/PlaceModeContext'
+import { useDesignerCursor } from '../context/cursor/DesignerCursorContext'
+import { usePaintMode } from '../context/cursor/PaintModeContext'
+import { usePlaceMode } from '../context/cursor/PlaceModeContext'
+import { useDesignerDialogs } from '../context/dialog/DesignerDialogContext'
 import {
   CursorMode,
   CursorModes,
@@ -16,7 +17,7 @@ export const DesignerSideboard = () => {
   const { cursorMode, setCursorMode } = useDesignerCursor()
   const { terrainType, setTerrainType } = usePaintMode()
   const { objectType, setObjectType } = usePlaceMode()
-  const { mapDefinition } = useDesigner()
+  const { setOpenDialog } = useDesignerDialogs()
   return (
     <div className='absolute  bottom-16 top-16 w-24 rounded-lg bg-slate-200 bg-opacity-50'>
       <div className='relative h-full w-full overflow-visible'>
@@ -41,7 +42,8 @@ export const DesignerSideboard = () => {
           />
           <div className='flex flex-col'>
             <h2 className='text-xl underline'>Map actions</h2>
-            <button>Export map</button>
+            <button onClick={() => setOpenDialog('Export')}>Export map</button>
+            <button onClick={() => setOpenDialog('Import')}>Import map</button>
           </div>
         </div>
       </div>

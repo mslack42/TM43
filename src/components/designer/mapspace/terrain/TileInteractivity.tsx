@@ -1,7 +1,7 @@
 'use client'
 import { CursorTileCapture } from '../../common/CursorTileCapture'
-import { useDesignerCursor } from '../../context/DesignerCursorContext'
-import { usePaintMode } from '../../context/PaintModeContext'
+import { useDesignerCursor } from '../../context/cursor/DesignerCursorContext'
+import { usePaintMode } from '../../context/cursor/PaintModeContext'
 import { XYLCoords } from '../../types'
 
 type Props = {

@@ -5,7 +5,7 @@ import {
   ObjectDefinition,
   useDesigner,
 } from '../context/DesignerContext'
-import { useDesignerCursor } from '../context/DesignerCursorContext'
+import { useDesignerCursor } from '../context/cursor/DesignerCursorContext'
 import { ObjectTile } from './objects/ObjectTile'
 import { TerrainTile } from './terrain/TerrainTile'
 

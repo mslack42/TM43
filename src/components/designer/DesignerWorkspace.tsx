@@ -4,7 +4,11 @@ import { TransformComponent, TransformWrapper } from 'react-zoom-pan-pinch'
 import { DesignerContextProvider } from './context/DesignerContext'
 import { LayerGrid } from './mapspace/LayerGrid'
 import { DesignerSideboard } from './controls/DesignerSideboard'
-import { useDesignerCursor } from './context/DesignerCursorContext'
+import { useDesignerCursor } from './context/cursor/DesignerCursorContext'
+import { useDesignerDialogs } from './context/dialog/DesignerDialogContext'
+
+import { ExportDialog } from './dialog/ExportDialog'
+import { ImportDialog } from './dialog/ImportDialog'
 
 export const DesignerWorkspace = () => {
   return (
@@ -59,6 +63,8 @@ function PanZoomWorkspace() {
           <DesignerSideboard />
         </>
       )}
+      <ExportDialog />
+      <ImportDialog />
     </>
   )
 }

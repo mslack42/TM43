@@ -1,8 +1,8 @@
 'use client'
 import { CursorTileCapture } from '../../common/CursorTileCapture'
-import { useDesignerCursor } from '../../context/DesignerCursorContext'
-import { usePlaceMode } from '../../context/PlaceModeContext'
-import { useSelectMode } from '../../context/SelectModeContext'
+import { useDesignerCursor } from '../../context/cursor/DesignerCursorContext'
+import { usePlaceMode } from '../../context/cursor/PlaceModeContext'
+import { useSelectMode } from '../../context/cursor/SelectModeContext'
 import { XYLCoords } from '../../types'
 
 type Props = { position: XYLCoords }

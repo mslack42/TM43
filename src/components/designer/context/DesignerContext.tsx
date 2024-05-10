@@ -2,10 +2,8 @@
 import { createContext, useContext, PropsWithChildren, useState } from 'react'
 import { defaultMapDefintion } from './defaultMapDefintion'
 import { TerrainType, ObjectType, XYLCoords } from '../types'
-import { PaintModeContextProvider } from './PaintModeContext'
-import { PlaceModeContextProvider } from './PlaceModeContext'
-import { SelectModeContextProvider } from './SelectModeContext'
-import { DesignerCursorContextProvider } from './DesignerCursorContext'
+import { DesignerCursorContextProvider } from './cursor/DesignerCursorContext'
+import { DesignerDialogProvider } from './dialog/DesignerDialogContext'
 
 export type MapDefinition = {
   objects: ObjectDefinition[]
@@ -53,13 +51,11 @@ export function DesignerContextProvider({ children }: PropsWithChildren) {
 
   return (
     <DesignerContext.Provider value={value}>
-      <DesignerCursorContextProvider>
-        <SelectModeContextProvider>
-          <PlaceModeContextProvider>
-            <PaintModeContextProvider>{children}</PaintModeContextProvider>
-          </PlaceModeContextProvider>
-        </SelectModeContextProvider>
-      </DesignerCursorContextProvider>
+      <DesignerDialogProvider>
+        <DesignerCursorContextProvider>
+          {children}
+        </DesignerCursorContextProvider>
+      </DesignerDialogProvider>
     </DesignerContext.Provider>
   )
 }
