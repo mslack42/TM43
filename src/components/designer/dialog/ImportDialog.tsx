@@ -33,7 +33,7 @@ export function ImportDialog() {
         <textarea
           placeholder='Paste a map export here'
           className='min-h-96'
-          value={importMap}
+          defaultValue={importMap}
           onChange={e => setImportMap(e.target.value)}
         ></textarea>
         <DialogFooter>
