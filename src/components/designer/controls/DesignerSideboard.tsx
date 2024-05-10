@@ -1,4 +1,5 @@
 'use client'
+import { useDesigner } from '../context/DesignerContext'
 import { useDesignerCursor } from '../context/DesignerCursorContext'
 import { usePaintMode } from '../context/PaintModeContext'
 import { usePlaceMode } from '../context/PlaceModeContext'
@@ -15,47 +16,52 @@ export const DesignerSideboard = () => {
   const { cursorMode, setCursorMode } = useDesignerCursor()
   const { terrainType, setTerrainType } = usePaintMode()
   const { objectType, setObjectType } = usePlaceMode()
+  const { mapDefinition } = useDesigner()
   return (
     <div className='absolute  bottom-16 top-16 w-24 rounded-lg bg-slate-200 bg-opacity-50'>
       <div className='relative h-full w-full overflow-visible'>
         <div className='absoulte bottom-0 left-12 top-0'>
-          <SideboardPane
+          <SideboardSelectPane
             title='Cursor'
             values={CursorModes}
             selectedValue={cursorMode}
             onValueSelect={newVal => setCursorMode(newVal)}
           />
-          <SideboardPane
+          <SideboardSelectPane
             title='Palette'
             values={TerrainTypes}
             selectedValue={cursorMode === 'Paint' ? terrainType : null}
             onValueSelect={newVal => setTerrainType(newVal)}
           />
-          <SideboardPane
+          <SideboardSelectPane
             title='Objects'
             values={ObjectTypes}
             selectedValue={cursorMode === 'Place' ? objectType : null}
             onValueSelect={newVal => setObjectType(newVal)}
           />
+          <div className='flex flex-col'>
+            <h2 className='text-xl underline'>Map actions</h2>
+            <button>Export map</button>
+          </div>
         </div>
       </div>
     </div>
   )
 }
 
-type PaneType = CursorMode | TerrainType | ObjectType
-type SideboardPaneProps<TValueType = PaneType> = {
+type SelectPaneType = CursorMode | TerrainType | ObjectType
+type SideboardSelectPaneProps<TValueType = SelectPaneType> = {
   title: string
   values: readonly TValueType[]
   selectedValue: TValueType | null
   onValueSelect: (value: TValueType) => void
 }
-function SideboardPane<TValueType>({
+function SideboardSelectPane<TValueType>({
   title,
   values,
   selectedValue,
   onValueSelect,
-}: SideboardPaneProps<TValueType>) {
+}: SideboardSelectPaneProps<TValueType>) {
   return (
     <div className='flex flex-col'>
       <h2 className='text-xl underline'>{title}</h2>
@@ -71,7 +77,7 @@ function SideboardPane<TValueType>({
   )
 }
 
-type SideboardButtonProps<TValueType = PaneType> = {
+type SideboardButtonProps<TValueType = SelectPaneType> = {
   value: TValueType
   selected: boolean
   onClick: () => void
