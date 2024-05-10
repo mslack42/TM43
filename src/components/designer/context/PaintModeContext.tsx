@@ -2,6 +2,7 @@
 import { createContext, useContext, PropsWithChildren, useState } from "react";
 import { useDesigner } from "./DesignerContext";
 import { TerrainType } from "../types";
+import { useDesignerCursor } from "./DesignerCursorContext";
 
 type PaintModeContextData = {
   isBrushDown: boolean;
@@ -29,7 +30,8 @@ export const usePaintMode = () => useContext(PaintModeContext);
 export function PaintModeContextProvider({ children }: PropsWithChildren) {
   const [isBrushDown, setIsBrushDown] = useState(false);
   const [terrainType, setTerrainType] = useState<TerrainType>("Ice");
-  const { mapDefinition, setMapDefinition, cursorTile } = useDesigner();
+  const { mapDefinition, setMapDefinition } = useDesigner();
+  const { cursorTile } = useDesignerCursor();
 
   const paintTile = () => {
     if (!cursorTile) {

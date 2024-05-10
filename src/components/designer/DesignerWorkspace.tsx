@@ -1,12 +1,10 @@
 "use client";
 import { useEffect, useState } from "react";
 import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";
-import {
-  DesignerContextProvider,
-  useDesigner,
-} from "./context/DesignerContext";
+import { DesignerContextProvider } from "./context/DesignerContext";
 import { LayerGrid } from "./mapspace/LayerGrid";
 import { DesignerSideboard } from "./controls/DesignerSideboard";
+import { useDesignerCursor } from "./context/DesignerCursorContext";
 
 export const DesignerWorkspace = () => {
   return (
@@ -21,7 +19,7 @@ export const DesignerWorkspace = () => {
 function PanZoomWorkspace() {
   const [ready, setReady] = useState(false);
   const [windowDims, setWindowDims] = useState([0, 0]);
-  const { cursorMode } = useDesigner();
+  const { cursorMode } = useDesignerCursor();
 
   useEffect(() => {
     function handleResize() {

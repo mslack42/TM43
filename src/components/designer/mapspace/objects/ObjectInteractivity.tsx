@@ -1,13 +1,13 @@
 "use client";
 import { CursorTileCapture } from "../../common/CursorTileCapture";
-import { useDesigner } from "../../context/DesignerContext";
+import { useDesignerCursor } from "../../context/DesignerCursorContext";
 import { usePlaceMode } from "../../context/PlaceModeContext";
 import { useSelectMode } from "../../context/SelectModeContext";
 import { XYLCoords } from "../../types";
 
 type Props = { position: XYLCoords };
 export const ObjectInteractivity = ({ position }: Props) => {
-  const { cursorMode } = useDesigner();
+  const { cursorMode } = useDesignerCursor();
   return (
     <CursorTileCapture cursorTile={position}>
       {cursorMode === "Place" ? (

@@ -7,9 +7,11 @@ import {
 } from "../context/DesignerContext";
 import { ObjectTile } from "./objects/ObjectTile";
 import { TerrainTile } from "./terrain/TerrainTile";
+import { useDesignerCursor } from "../context/DesignerCursorContext";
 
 export const Layer = ({ layer }: { layer: GridDefinition }) => {
-  const { mapDefinition, cursorMode, setCursorTile } = useDesigner();
+  const { mapDefinition } = useDesigner();
+  const { cursorMode, setCursorTile } = useDesignerCursor();
 
   const objects: (ObjectDefinition | null)[][] = layer.grid.map((r) =>
     r.map((c) => null)

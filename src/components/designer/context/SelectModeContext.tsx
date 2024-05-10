@@ -1,6 +1,7 @@
 "use client";
 import { createContext, useContext, PropsWithChildren, useState } from "react";
 import { ObjectDefinition, useDesigner } from "./DesignerContext";
+import { useDesignerCursor } from "./DesignerCursorContext";
 
 type SelectModeContextData = {
   selectedObject: ObjectDefinition | null;
@@ -28,7 +29,8 @@ export const SelectModeContextProvider = ({ children }: PropsWithChildren) => {
   const [selectedObject, setSelectedObject] = useState<ObjectDefinition | null>(
     null
   );
-  const { mapDefinition, setMapDefinition, cursorTile } = useDesigner();
+  const { mapDefinition, setMapDefinition } = useDesigner();
+  const { cursorTile } = useDesignerCursor();
 
   const selectObject = () => {
     if (selectedObject || !cursorTile) {

@@ -6,6 +6,7 @@ import {
   ObjectDefinition,
   useDesigner,
 } from "./DesignerContext";
+import { useDesignerCursor } from "./DesignerCursorContext";
 
 type PlaceModeContextData = {
   objectType: ObjectType;
@@ -36,7 +37,8 @@ export const PlaceModeContextProvider = ({ children }: PropsWithChildren) => {
   const [selectedObject, setSelectedObject] = useState<ObjectDefinition | null>(
     null
   );
-  const { mapDefinition, setMapDefinition, cursorTile } = useDesigner();
+  const { mapDefinition, setMapDefinition } = useDesigner();
+  const { cursorTile } = useDesignerCursor();
 
   const placeObject = () => {
     if (!cursorTile) {

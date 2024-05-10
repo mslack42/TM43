@@ -16,7 +16,7 @@ export const ObjectDisplay = ({ object }: { object: ObjectDefinition }) => {
     }
   };
   return (
-    <div className="w-full h-full text-center align-middle bg-slate-500 bg-opacity-50">
+    <div className="w-full h-full text-center align-middle bg-slate-500 bg-opacity-50 rounded-xl">
       {getTempContents(object)}
     </div>
   );

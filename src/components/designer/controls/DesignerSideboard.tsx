@@ -1,6 +1,5 @@
 "use client";
-
-import { useDesigner } from "../context/DesignerContext";
+import { useDesignerCursor } from "../context/DesignerCursorContext";
 import { usePaintMode } from "../context/PaintModeContext";
 import { usePlaceMode } from "../context/PlaceModeContext";
 import {
@@ -13,7 +12,7 @@ import {
 } from "../types";
 
 export const DesignerSideboard = () => {
-  const { cursorMode, setCursorMode } = useDesigner();
+  const { cursorMode, setCursorMode } = useDesignerCursor();
   const { terrainType, setTerrainType } = usePaintMode();
   const { objectType, setObjectType } = usePlaceMode();
   return (
