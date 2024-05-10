@@ -1,53 +1,53 @@
-"use client";
-import { CursorTileCapture } from "../../common/CursorTileCapture";
-import { useDesignerCursor } from "../../context/DesignerCursorContext";
-import { usePaintMode } from "../../context/PaintModeContext";
-import { XYLCoords } from "../../types";
+'use client'
+import { CursorTileCapture } from '../../common/CursorTileCapture'
+import { useDesignerCursor } from '../../context/DesignerCursorContext'
+import { usePaintMode } from '../../context/PaintModeContext'
+import { XYLCoords } from '../../types'
 
 type Props = {
-  position: XYLCoords;
-};
+  position: XYLCoords
+}
 
 export const TileInteractivity = ({ position }: Props) => {
-  const { cursorMode } = useDesignerCursor();
+  const { cursorMode } = useDesignerCursor()
   return (
     <CursorTileCapture cursorTile={position}>
-      {cursorMode === "Paint" ? (
+      {cursorMode === 'Paint' ? (
         <PaintMode />
       ) : (
-        <div className="w-full h-full"></div>
+        <div className='h-full w-full'></div>
       )}
     </CursorTileCapture>
-  );
-};
+  )
+}
 
 const PaintMode = () => {
-  const { paintTile, isBrushDown, setIsBrushDown } = usePaintMode();
+  const { paintTile, isBrushDown, setIsBrushDown } = usePaintMode()
   return (
     <div
-      className="w-full h-full "
+      className='h-full w-full '
       onPointerDown={() => {
-        setIsBrushDown(true);
-        paintTile();
+        setIsBrushDown(true)
+        paintTile()
       }}
       onPointerUp={() => {
-        setIsBrushDown(false);
+        setIsBrushDown(false)
       }}
       onPointerMove={() => {
         if (isBrushDown) {
-          paintTile();
+          paintTile()
         }
       }}
       onPointerEnter={() => {
         if (isBrushDown) {
-          paintTile();
+          paintTile()
         }
       }}
       onPointerLeave={() => {
         if (isBrushDown) {
-          paintTile();
+          paintTile()
         }
       }}
     ></div>
-  );
-};
+  )
+}

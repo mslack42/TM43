@@ -1,7 +1,7 @@
-"use client";
-import { useDesignerCursor } from "../context/DesignerCursorContext";
-import { usePaintMode } from "../context/PaintModeContext";
-import { usePlaceMode } from "../context/PlaceModeContext";
+'use client'
+import { useDesignerCursor } from '../context/DesignerCursorContext'
+import { usePaintMode } from '../context/PaintModeContext'
+import { usePlaceMode } from '../context/PlaceModeContext'
 import {
   CursorMode,
   CursorModes,
@@ -9,47 +9,47 @@ import {
   ObjectTypes,
   TerrainType,
   TerrainTypes,
-} from "../types";
+} from '../types'
 
 export const DesignerSideboard = () => {
-  const { cursorMode, setCursorMode } = useDesignerCursor();
-  const { terrainType, setTerrainType } = usePaintMode();
-  const { objectType, setObjectType } = usePlaceMode();
+  const { cursorMode, setCursorMode } = useDesignerCursor()
+  const { terrainType, setTerrainType } = usePaintMode()
+  const { objectType, setObjectType } = usePlaceMode()
   return (
-    <div className="absolute  top-16 bottom-16 rounded-lg w-24 bg-slate-200 bg-opacity-50">
-      <div className="relative w-full h-full overflow-visible">
-        <div className="absoulte left-12 top-0 bottom-0">
+    <div className='absolute  bottom-16 top-16 w-24 rounded-lg bg-slate-200 bg-opacity-50'>
+      <div className='relative h-full w-full overflow-visible'>
+        <div className='absoulte bottom-0 left-12 top-0'>
           <SideboardPane
-            title="Cursor"
+            title='Cursor'
             values={CursorModes}
             selectedValue={cursorMode}
-            onValueSelect={(newVal) => setCursorMode(newVal)}
+            onValueSelect={newVal => setCursorMode(newVal)}
           />
           <SideboardPane
-            title="Palette"
+            title='Palette'
             values={TerrainTypes}
-            selectedValue={cursorMode === "Paint" ? terrainType : null}
-            onValueSelect={(newVal) => setTerrainType(newVal)}
+            selectedValue={cursorMode === 'Paint' ? terrainType : null}
+            onValueSelect={newVal => setTerrainType(newVal)}
           />
           <SideboardPane
-            title="Objects"
+            title='Objects'
             values={ObjectTypes}
-            selectedValue={cursorMode === "Place" ? objectType : null}
-            onValueSelect={(newVal) => setObjectType(newVal)}
+            selectedValue={cursorMode === 'Place' ? objectType : null}
+            onValueSelect={newVal => setObjectType(newVal)}
           />
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-type PaneType = CursorMode | TerrainType | ObjectType;
+type PaneType = CursorMode | TerrainType | ObjectType
 type SideboardPaneProps<TValueType = PaneType> = {
-  title: string;
-  values: readonly TValueType[];
-  selectedValue: TValueType | null;
-  onValueSelect: (value: TValueType) => void;
-};
+  title: string
+  values: readonly TValueType[]
+  selectedValue: TValueType | null
+  onValueSelect: (value: TValueType) => void
+}
 function SideboardPane<TValueType>({
   title,
   values,
@@ -57,8 +57,8 @@ function SideboardPane<TValueType>({
   onValueSelect,
 }: SideboardPaneProps<TValueType>) {
   return (
-    <div className="flex flex-col">
-      <h2 className="text-xl underline">{title}</h2>
+    <div className='flex flex-col'>
+      <h2 className='text-xl underline'>{title}</h2>
       {values.map((v, i) => (
         <SideboardButton
           key={i}
@@ -68,14 +68,14 @@ function SideboardPane<TValueType>({
         />
       ))}
     </div>
-  );
+  )
 }
 
 type SideboardButtonProps<TValueType = PaneType> = {
-  value: TValueType;
-  selected: boolean;
-  onClick: () => void;
-};
+  value: TValueType
+  selected: boolean
+  onClick: () => void
+}
 function SideboardButton<TValueType>({
   value,
   selected,
@@ -84,9 +84,9 @@ function SideboardButton<TValueType>({
   return (
     <button
       onClick={onClick}
-      className={selected ? "bg-green-500" : "bg-red-500"}
+      className={selected ? 'bg-green-500' : 'bg-red-500'}
     >
       {value as string}
     </button>
-  );
+  )
 }

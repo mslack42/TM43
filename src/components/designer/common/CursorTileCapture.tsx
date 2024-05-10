@@ -1,21 +1,21 @@
-import { PropsWithChildren } from "react";
-import { XYLCoords } from "../types";
-import { useDesignerCursor } from "../context/DesignerCursorContext";
+import { PropsWithChildren } from 'react'
+import { XYLCoords } from '../types'
+import { useDesignerCursor } from '../context/DesignerCursorContext'
 
 type Props = {
-  cursorTile: XYLCoords;
-};
+  cursorTile: XYLCoords
+}
 export const CursorTileCapture = ({
   children,
   cursorTile,
 }: PropsWithChildren<Props>) => {
-  const { setCursorTile } = useDesignerCursor();
+  const { setCursorTile } = useDesignerCursor()
   return (
     <div
-      className="w-full h-full"
+      className='h-full w-full'
       onPointerMove={() => setCursorTile(cursorTile)}
     >
       {children}
     </div>
-  );
-};
+  )
+}

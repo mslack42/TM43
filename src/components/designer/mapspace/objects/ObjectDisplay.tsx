@@ -1,23 +1,23 @@
-"use client";
-import { ObjectDefinition } from "../../context/DesignerContext";
+'use client'
+import { ObjectDefinition } from '../../context/DesignerContext'
 
 export const ObjectDisplay = ({ object }: { object: ObjectDefinition }) => {
   const getTempContents = (object: ObjectDefinition) => {
     switch (object.objectType) {
-      case "Player": {
-        return "P";
+      case 'Player': {
+        return 'P'
       }
-      case "Goal": {
-        return "G";
+      case 'Goal': {
+        return 'G'
       }
       default: {
-        return "err";
+        return 'err'
       }
     }
-  };
+  }
   return (
-    <div className="w-full h-full text-center align-middle bg-slate-500 bg-opacity-50 rounded-xl">
+    <div className='h-full w-full rounded-xl bg-slate-500 bg-opacity-50 text-center align-middle'>
       {getTempContents(object)}
     </div>
-  );
-};
+  )
+}

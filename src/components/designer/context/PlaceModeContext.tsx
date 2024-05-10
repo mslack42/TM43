@@ -1,48 +1,44 @@
-"use client";
-import { createContext, useContext, PropsWithChildren, useState } from "react";
-import { ObjectType } from "../types";
-import {
-  MapDefinition,
-  ObjectDefinition,
-  useDesigner,
-} from "./DesignerContext";
-import { useDesignerCursor } from "./DesignerCursorContext";
+'use client'
+import { createContext, useContext, PropsWithChildren, useState } from 'react'
+import { ObjectType } from '../types'
+import { MapDefinition, ObjectDefinition, useDesigner } from './DesignerContext'
+import { useDesignerCursor } from './DesignerCursorContext'
 
 type PlaceModeContextData = {
-  objectType: ObjectType;
-  setObjectType: (newObject: ObjectType) => void;
-  placeObject: () => void;
-  selectedObject: ObjectDefinition | null;
-  selectObject: (obj: ObjectDefinition) => void;
-};
+  objectType: ObjectType
+  setObjectType: (newObject: ObjectType) => void
+  placeObject: () => void
+  selectedObject: ObjectDefinition | null
+  selectObject: (obj: ObjectDefinition) => void
+}
 
 const PlaceModeContext = createContext<PlaceModeContextData>({
-  objectType: "Player",
+  objectType: 'Player',
   setObjectType: function (_newObject: ObjectType): void {
-    throw new Error("Function not implemented.");
+    throw new Error('Function not implemented.')
   },
   placeObject: function (): void {
-    throw new Error("Function not implemented.");
+    throw new Error('Function not implemented.')
   },
   selectedObject: null,
   selectObject: function (obj: ObjectDefinition): void {
-    throw new Error("Function not implemented.");
+    throw new Error('Function not implemented.')
   },
-});
+})
 
-export const usePlaceMode = () => useContext(PlaceModeContext);
+export const usePlaceMode = () => useContext(PlaceModeContext)
 
 export const PlaceModeContextProvider = ({ children }: PropsWithChildren) => {
-  const [objectType, setObjectType] = useState<ObjectType>("Player");
+  const [objectType, setObjectType] = useState<ObjectType>('Player')
   const [selectedObject, setSelectedObject] = useState<ObjectDefinition | null>(
-    null
-  );
-  const { mapDefinition, setMapDefinition } = useDesigner();
-  const { cursorTile } = useDesignerCursor();
+    null,
+  )
+  const { mapDefinition, setMapDefinition } = useDesigner()
+  const { cursorTile } = useDesignerCursor()
 
   const placeObject = () => {
     if (!cursorTile) {
-      return;
+      return
     }
     const newMapDef: MapDefinition = {
       ...mapDefinition,
@@ -53,13 +49,13 @@ export const PlaceModeContextProvider = ({ children }: PropsWithChildren) => {
           objectType,
         },
       ],
-    };
-    setMapDefinition(newMapDef);
-  };
+    }
+    setMapDefinition(newMapDef)
+  }
 
   const selectObject = (obj: ObjectDefinition) => {
-    setSelectedObject(obj);
-  };
+    setSelectedObject(obj)
+  }
 
   const value: PlaceModeContextData = {
     objectType,
@@ -67,11 +63,11 @@ export const PlaceModeContextProvider = ({ children }: PropsWithChildren) => {
     placeObject,
     selectedObject,
     selectObject,
-  };
+  }
 
   return (
     <PlaceModeContext.Provider value={value}>
       {children}
     </PlaceModeContext.Provider>
-  );
-};
+  )
+}
