@@ -1,6 +1,6 @@
 "use client";
 import { createContext, useContext, PropsWithChildren, useState } from "react";
-import { ObjectType, XYCoords } from "../types";
+import { ObjectType } from "../types";
 import {
   MapDefinition,
   ObjectDefinition,
@@ -47,8 +47,7 @@ export const PlaceModeContextProvider = ({ children }: PropsWithChildren) => {
       objects: [
         ...mapDefinition.objects,
         {
-          gridId: cursorTile[2],
-          position: [cursorTile[0], cursorTile[1]],
+          position: cursorTile,
           objectType,
         },
       ],

@@ -1,13 +1,7 @@
 "use client";
 import { createContext, useContext, PropsWithChildren, useState } from "react";
 import { defaultMapDefintion } from "./defaultMapDefintion";
-import {
-  TerrainType,
-  ObjectType,
-  XYCoords,
-  CursorMode,
-  XYLCoords,
-} from "../types";
+import { TerrainType, ObjectType, CursorMode, XYLCoords } from "../types";
 import { PaintModeContextProvider } from "./PaintModeContext";
 import { PlaceModeContextProvider } from "./PlaceModeContext";
 import { SelectModeContextProvider } from "./SelectModeContext";
@@ -27,8 +21,7 @@ export type GridTileDefinition = {
 
 export type ObjectDefinition = {
   objectType: ObjectType;
-  position: XYCoords;
-  gridId: string;
+  position: XYLCoords;
 };
 
 export type DesignerContextData = {
@@ -66,7 +59,6 @@ export function DesignerContextProvider({ children }: PropsWithChildren) {
   const [cursorMode, setCursorMode] = useState<CursorMode>("Drag");
   const [cursorTile, _setCursorTile] = useState<XYLCoords | null>(null);
   const setCursorTile = (val: XYLCoords | null) => {
-    console.log(val);
     _setCursorTile(val);
   };
 

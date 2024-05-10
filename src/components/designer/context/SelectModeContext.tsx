@@ -1,11 +1,6 @@
 "use client";
 import { createContext, useContext, PropsWithChildren, useState } from "react";
-import { ObjectType, XYCoords } from "../types";
-import {
-  MapDefinition,
-  ObjectDefinition,
-  useDesigner,
-} from "./DesignerContext";
+import { ObjectDefinition, useDesigner } from "./DesignerContext";
 
 type SelectModeContextData = {
   selectedObject: ObjectDefinition | null;
@@ -43,7 +38,7 @@ export const SelectModeContextProvider = ({ children }: PropsWithChildren) => {
       (obj) =>
         obj.position[0] === cursorTile[0] &&
         obj.position[1] === cursorTile[1] &&
-        obj.gridId === cursorTile[2]
+        obj.position[2] === cursorTile[2]
     );
     if (matchedObjects.length === 0) {
       return;
@@ -55,9 +50,9 @@ export const SelectModeContextProvider = ({ children }: PropsWithChildren) => {
       objects: [...mapDefinition.objects].filter(
         (obj) =>
           !(
-            obj.gridId === matched.gridId &&
             obj.position[0] === matched.position[0] &&
-            obj.position[1] === matched.position[1]
+            obj.position[1] === matched.position[1] &&
+            obj.position[2] === matched.position[2]
           )
       ),
     });
@@ -73,8 +68,7 @@ export const SelectModeContextProvider = ({ children }: PropsWithChildren) => {
         ...mapDefinition.objects,
         {
           ...selectedObject,
-          position: [cursorTile[0], cursorTile[1]],
-          gridId: cursorTile[2],
+          position: cursorTile,
         },
       ],
     });

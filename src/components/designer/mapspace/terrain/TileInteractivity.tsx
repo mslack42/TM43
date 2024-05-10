@@ -2,17 +2,16 @@
 import { CursorTileCapture } from "../../common/CursorTileCapture";
 import { useDesigner } from "../../context/DesignerContext";
 import { usePaintMode } from "../../context/PaintModeContext";
-import { XYCoords } from "../../types";
+import { XYLCoords } from "../../types";
 
 type Props = {
-  tileCoords: XYCoords;
-  layerId: string;
+  position: XYLCoords;
 };
 
-export const TileInteractivity = (props: Props) => {
+export const TileInteractivity = ({ position }: Props) => {
   const { cursorMode } = useDesigner();
   return (
-    <CursorTileCapture cursorTile={[...props.tileCoords, props.layerId]}>
+    <CursorTileCapture cursorTile={position}>
       {cursorMode === "Paint" ? (
         <PaintMode />
       ) : (

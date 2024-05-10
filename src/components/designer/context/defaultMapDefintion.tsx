@@ -5,13 +5,11 @@ export const defaultMapDefintion: MapDefinition = {
   objects: [
     {
       objectType: "Player",
-      position: [1, 1],
-      gridId: "ground",
+      position: [1, 1, "ground"],
     },
     {
       objectType: "Goal",
-      position: [3, 3],
-      gridId: "basement",
+      position: [3, 3, "basement"],
     },
   ],
   layers: [

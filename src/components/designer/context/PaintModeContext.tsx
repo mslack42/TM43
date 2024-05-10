@@ -1,7 +1,7 @@
 "use client";
 import { createContext, useContext, PropsWithChildren, useState } from "react";
 import { useDesigner } from "./DesignerContext";
-import { TerrainType, XYCoords } from "../types";
+import { TerrainType } from "../types";
 
 type PaintModeContextData = {
   isBrushDown: boolean;

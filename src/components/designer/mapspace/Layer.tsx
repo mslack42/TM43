@@ -15,7 +15,7 @@ export const Layer = ({ layer }: { layer: GridDefinition }) => {
     r.map((c) => null)
   );
   mapDefinition.objects
-    .filter((ob) => ob.gridId === layer.gridId)
+    .filter((ob) => ob.position[2] === layer.gridId)
     .forEach((ob) => {
       objects[ob.position[1]][ob.position[0]] = ob;
     });
@@ -34,11 +34,7 @@ export const Layer = ({ layer }: { layer: GridDefinition }) => {
             <div key={j} className="flex flex-row">
               {r.map((c, k) => (
                 <Fragment key={k}>
-                  <TerrainTile
-                    tileDef={c}
-                    tileCoords={[k, j]}
-                    layerId={layer.gridId}
-                  />
+                  <TerrainTile tileDef={c} position={[k, j, layer.gridId]} />
                 </Fragment>
               ))}
             </div>
@@ -58,8 +54,7 @@ export const Layer = ({ layer }: { layer: GridDefinition }) => {
                 <Fragment key={k}>
                   <ObjectTile
                     object={c ?? undefined}
-                    position={[k, j]}
-                    layerId={layer.gridId}
+                    position={[k, j, layer.gridId]}
                   />
                 </Fragment>
               ))}

@@ -3,13 +3,13 @@ import { CursorTileCapture } from "../../common/CursorTileCapture";
 import { useDesigner } from "../../context/DesignerContext";
 import { usePlaceMode } from "../../context/PlaceModeContext";
 import { useSelectMode } from "../../context/SelectModeContext";
-import { XYCoords } from "../../types";
+import { XYLCoords } from "../../types";
 
-type Props = { coords: XYCoords; layerId: string };
-export const ObjectInteractivity = (props: Props) => {
+type Props = { position: XYLCoords };
+export const ObjectInteractivity = ({ position }: Props) => {
   const { cursorMode } = useDesigner();
   return (
-    <CursorTileCapture cursorTile={[...props.coords, props.layerId]}>
+    <CursorTileCapture cursorTile={position}>
       {cursorMode === "Place" ? (
         <PlaceMode />
       ) : cursorMode === "Select" ? (
