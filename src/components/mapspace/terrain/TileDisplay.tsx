@@ -1,5 +1,6 @@
 'use client'
-import { TerrainType } from '../../types'
+
+import { TerrainType } from '../types'
 
 export const TileDisplay = ({ terrain }: { terrain: TerrainType }) => {
   const getStyle = (terrain: TerrainType) => {

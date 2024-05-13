@@ -1,6 +1,6 @@
 'use client'
 
-import { MapDefinition } from '../types'
+import { MapDefinition } from '@/components/mapspace/types'
 
 export const defaultMapDefintion: MapDefinition = {
   objects: [

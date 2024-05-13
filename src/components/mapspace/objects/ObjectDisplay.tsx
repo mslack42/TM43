@@ -1,5 +1,6 @@
 'use client'
-import { ObjectDefinition } from '../../types'
+
+import { ObjectDefinition } from '../types'
 
 export const ObjectDisplay = ({ object }: { object: ObjectDefinition }) => {
   const getTempContents = (object: ObjectDefinition) => {

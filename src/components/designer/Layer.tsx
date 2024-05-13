@@ -1,10 +1,11 @@
 'use client'
+
 import { Fragment } from 'react'
-import { useDesigner } from '../context/DesignerContext'
-import { useDesignerCursor } from '../context/cursor/DesignerCursorContext'
-import { ObjectTile } from './objects/ObjectTile'
-import { TerrainTile } from './terrain/TerrainTile'
-import { GridDefinition, ObjectDefinition } from '../types'
+import { ObjectTile } from '../mapspace/objects/ObjectTile'
+import { TerrainTile } from '../mapspace/terrain/TerrainTile'
+import { GridDefinition, ObjectDefinition } from '../mapspace/types'
+import { useDesignerCursor } from './context/cursor/DesignerCursorContext'
+import { useDesigner } from './context/DesignerContext'
 
 export const Layer = ({ layer }: { layer: GridDefinition }) => {
   const { mapDefinition } = useDesigner()

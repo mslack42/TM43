@@ -1,8 +1,9 @@
 'use client'
-import { createContext, useContext, PropsWithChildren, useState } from 'react'
-import { defaultMapDefintion } from './defaultMapDefintion'
-import { MapDefinition } from '../types'
+import { MapContextProvider } from '@/components/mapspace/context/MapContext'
+import { MapDefinition } from '@/components/mapspace/types'
+import { createContext, PropsWithChildren, useContext, useState } from 'react'
 import { DesignerCursorContextProvider } from './cursor/DesignerCursorContext'
+import { defaultMapDefintion } from './defaultMapDefintion'
 import { DesignerDialogProvider } from './dialog/DesignerDialogContext'
 
 export type DesignerContextData = {
@@ -34,11 +35,13 @@ export function DesignerContextProvider({ children }: PropsWithChildren) {
 
   return (
     <DesignerContext.Provider value={value}>
-      <DesignerDialogProvider>
-        <DesignerCursorContextProvider>
-          {children}
-        </DesignerCursorContextProvider>
-      </DesignerDialogProvider>
+      <MapContextProvider tileMode='Designer'>
+        <DesignerDialogProvider>
+          <DesignerCursorContextProvider>
+            {children}
+          </DesignerCursorContextProvider>
+        </DesignerDialogProvider>
+      </MapContextProvider>
     </DesignerContext.Provider>
   )
 }

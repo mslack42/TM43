@@ -1,17 +1,16 @@
 'use client'
-import { useDesigner } from '../context/DesignerContext'
-import { useDesignerCursor } from '../context/cursor/DesignerCursorContext'
-import { usePaintMode } from '../context/cursor/PaintModeContext'
-import { usePlaceMode } from '../context/cursor/PlaceModeContext'
-import { useDesignerDialogs } from '../context/dialog/DesignerDialogContext'
+
 import {
-  CursorMode,
-  CursorModes,
   ObjectType,
   ObjectTypes,
   TerrainType,
   TerrainTypes,
-} from '../types'
+} from '@/components/mapspace/types'
+import { useDesignerCursor } from '../context/cursor/DesignerCursorContext'
+import { usePaintMode } from '../context/cursor/PaintModeContext'
+import { usePlaceMode } from '../context/cursor/PlaceModeContext'
+import { useDesignerDialogs } from '../context/dialog/DesignerDialogContext'
+import { CursorMode, CursorModes } from '../types'
 
 export const DesignerSideboard = () => {
   const { cursorMode, setCursorMode } = useDesignerCursor()

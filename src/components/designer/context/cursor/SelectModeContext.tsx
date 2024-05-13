@@ -1,8 +1,8 @@
 'use client'
-import { createContext, useContext, PropsWithChildren, useState } from 'react'
+import { ObjectDefinition } from '@/components/mapspace/types'
+import { createContext, PropsWithChildren, useContext, useState } from 'react'
 import { useDesigner } from '../DesignerContext'
 import { useDesignerCursor } from './DesignerCursorContext'
-import { ObjectDefinition } from '../../types'
 
 type SelectModeContextData = {
   selectedObject: ObjectDefinition | null

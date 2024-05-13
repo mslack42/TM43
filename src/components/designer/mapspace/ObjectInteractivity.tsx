@@ -1,9 +1,10 @@
 'use client'
-import { CursorTileCapture } from '../../common/CursorTileCapture'
-import { useDesignerCursor } from '../../context/cursor/DesignerCursorContext'
-import { usePlaceMode } from '../../context/cursor/PlaceModeContext'
-import { useSelectMode } from '../../context/cursor/SelectModeContext'
-import { XYLCoords } from '../../types'
+
+import { CursorTileCapture } from '@/components/designer/common/CursorTileCapture'
+import { useDesignerCursor } from '@/components/designer/context/cursor/DesignerCursorContext'
+import { usePlaceMode } from '@/components/designer/context/cursor/PlaceModeContext'
+import { useSelectMode } from '@/components/designer/context/cursor/SelectModeContext'
+import { XYLCoords } from '../../mapspace/types'
 
 type Props = { position: XYLCoords }
 export const ObjectInteractivity = ({ position }: Props) => {

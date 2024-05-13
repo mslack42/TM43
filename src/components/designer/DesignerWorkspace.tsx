@@ -2,10 +2,11 @@
 import { useEffect, useState } from 'react'
 import { TransformComponent, TransformWrapper } from 'react-zoom-pan-pinch'
 import { DesignerContextProvider } from './context/DesignerContext'
-import { LayerGrid } from './mapspace/LayerGrid'
-import { DesignerSideboard } from './controls/DesignerSideboard'
-import { useDesignerCursor } from './context/cursor/DesignerCursorContext'
 
+import { useDesignerCursor } from './context/cursor/DesignerCursorContext'
+import { DesignerSideboard } from './controls/DesignerSideboard'
+
+import { LayerGrid } from './LayerGrid'
 import { ExportDialog } from './dialog/ExportDialog'
 import { ImportDialog } from './dialog/ImportDialog'
 

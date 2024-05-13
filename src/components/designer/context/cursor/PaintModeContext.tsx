@@ -1,7 +1,7 @@
 'use client'
-import { createContext, useContext, PropsWithChildren, useState } from 'react'
+import { TerrainType } from '@/components/mapspace/types'
+import { createContext, PropsWithChildren, useContext, useState } from 'react'
 import { useDesigner } from '../DesignerContext'
-import { TerrainType } from '../../types'
 import { useDesignerCursor } from './DesignerCursorContext'
 
 type PaintModeContextData = {

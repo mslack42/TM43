@@ -1,8 +1,9 @@
 'use client'
-import { useDesigner } from '../context/DesignerContext'
+
+import { usePaintMode } from './context/cursor/PaintModeContext'
+import { useSelectMode } from './context/cursor/SelectModeContext'
+import { useDesigner } from './context/DesignerContext'
 import { Layer } from './Layer'
-import { usePaintMode } from '../context/cursor/PaintModeContext'
-import { useSelectMode } from '../context/cursor/SelectModeContext'
 
 export const LayerGrid = () => {
   const { mapDefinition } = useDesigner()

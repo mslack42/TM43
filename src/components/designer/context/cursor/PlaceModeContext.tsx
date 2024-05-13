@@ -1,6 +1,10 @@
 'use client'
-import { createContext, useContext, PropsWithChildren, useState } from 'react'
-import { MapDefinition, ObjectDefinition, ObjectType } from '../../types'
+import {
+  MapDefinition,
+  ObjectDefinition,
+  ObjectType,
+} from '@/components/mapspace/types'
+import { createContext, PropsWithChildren, useContext, useState } from 'react'
 import { useDesigner } from '../DesignerContext'
 import { useDesignerCursor } from './DesignerCursorContext'
 

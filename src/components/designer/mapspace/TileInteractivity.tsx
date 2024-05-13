@@ -1,8 +1,9 @@
 'use client'
-import { CursorTileCapture } from '../../common/CursorTileCapture'
-import { useDesignerCursor } from '../../context/cursor/DesignerCursorContext'
-import { usePaintMode } from '../../context/cursor/PaintModeContext'
-import { XYLCoords } from '../../types'
+
+import { CursorTileCapture } from '@/components/designer/common/CursorTileCapture'
+import { useDesignerCursor } from '@/components/designer/context/cursor/DesignerCursorContext'
+import { usePaintMode } from '@/components/designer/context/cursor/PaintModeContext'
+import { XYLCoords } from '../../mapspace/types'
 
 type Props = {
   position: XYLCoords

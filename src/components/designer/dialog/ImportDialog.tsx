@@ -1,3 +1,5 @@
+import { MapDefinition } from '@/components/mapspace/types'
+import { DialogDescription } from '@radix-ui/react-dialog'
 import { useState } from 'react'
 import {
   Dialog,
@@ -7,8 +9,6 @@ import {
 } from '../../common/Dialog'
 import { useDesigner } from '../context/DesignerContext'
 import { useDesignerDialogs } from '../context/dialog/DesignerDialogContext'
-import { DialogDescription } from '@radix-ui/react-dialog'
-import { MapDefinition } from '../types'
 
 export function ImportDialog() {
   const { setOpenDialog, openDialog } = useDesignerDialogs()

@@ -1,5 +1,5 @@
+import { XYLCoords } from '@/components/mapspace/types'
 import { PropsWithChildren } from 'react'
-import { XYLCoords } from '../types'
 import { useDesignerCursor } from '../context/cursor/DesignerCursorContext'
 
 type Props = {
