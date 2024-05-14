@@ -2,6 +2,7 @@
 import { MapContextProvider } from '@/components/mapspace/context/MapContext'
 import { MapDefinition } from '@/components/mapspace/types'
 import { LevelPlayer } from '@/components/player/LevelPlayer'
+import { useCamera } from './context/CameraContext'
 import {
   GameplayContextProvider,
   useGameplayContext,
@@ -21,9 +22,13 @@ export function LevelPlayWindow({ level }: { level: MapDefinition }) {
 }
 
 function GameWindow() {
-  const { currentMapContext, cameraPosition } = useGameplayContext()
+  const { currentMapContext } = useGameplayContext()
+  const { cameraPosition } = useCamera()
 
-  const cameraTranslation = [cameraPosition[0] + 240, cameraPosition[1] + 160]
+  const cameraTranslation = [
+    cameraPosition[0] + 240 - 16,
+    cameraPosition[1] + 160 - 16,
+  ]
 
   return (
     <div
