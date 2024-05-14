@@ -53,7 +53,7 @@ export const Layer = ({ layer }: { layer: GridDefinition }) => {
               {r.map((c, k) => (
                 <Fragment key={k}>
                   <ObjectTile
-                    object={c ?? undefined}
+                    objectType={c?.objectType ?? undefined}
                     position={[k, j, layer.gridId]}
                   />
                 </Fragment>

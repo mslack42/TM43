@@ -1,0 +1,211 @@
+{
+    "objects": [
+        {
+            "objectType": "Player",
+            "position": [
+                1,
+                1,
+                "ground"
+            ]
+        },
+        {
+            "objectType": "Goal",
+            "position": [
+                3,
+                3,
+                "basement"
+            ]
+        },
+        {
+            "position": [
+                0,
+                0,
+                "ground"
+            ],
+            "objectType": "Player"
+        }
+    ],
+    "layers": [
+        {
+            "gridId": "ground",
+            "grid": [
+                [
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    }
+                ],
+                [
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    }
+                ],
+                [
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    }
+                ],
+                [
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    }
+                ],
+                [
+                    {
+                        "terrainType": "Rock"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    }
+                ]
+            ]
+        },
+        {
+            "gridId": "basement",
+            "grid": [
+                [
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    }
+                ],
+                [
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    }
+                ],
+                [
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    }
+                ],
+                [
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    }
+                ],
+                [
+                    {
+                        "terrainType": "Rock"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    }
+                ]
+            ]
+        }
+    ],
+    "name": "2p2"
+}

@@ -1,10 +1,21 @@
 import { MapDefinition } from '@/components/mapspace/types'
 import { readdirSync } from 'fs'
+import Link from 'next/link'
 
 export default async function LevelSelectPage() {
   try {
     const x = await getLevelSelectionData()
-    return <main className='min-h-screen min-w-full'>{JSON.stringify(x)}</main>
+    return (
+      <main className='min-h-screen min-w-full'>
+        <ul>
+          {x?.map(v => (
+            <li key={v.name}>
+              <Link href={`/level/${v.name}`}>{v.name}</Link>
+            </li>
+          ))}
+        </ul>
+      </main>
+    )
   } catch (err) {
     return <main className='min-h-screen min-w-full'>No such level...</main>
   }

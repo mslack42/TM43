@@ -1,10 +1,10 @@
 'use client'
 
-import { ObjectDefinition } from '../types'
+import { ObjectType } from '../types'
 
-export const ObjectDisplay = ({ object }: { object: ObjectDefinition }) => {
-  const getTempContents = (object: ObjectDefinition) => {
-    switch (object.objectType) {
+export const ObjectDisplay = ({ objectType }: { objectType: ObjectType }) => {
+  const getTempContents = (objectType: ObjectType) => {
+    switch (objectType) {
       case 'Player': {
         return 'P'
       }
@@ -18,7 +18,7 @@ export const ObjectDisplay = ({ object }: { object: ObjectDefinition }) => {
   }
   return (
     <div className='h-full w-full rounded-xl bg-slate-500 bg-opacity-50 text-center align-middle'>
-      {getTempContents(object)}
+      {getTempContents(objectType)}
     </div>
   )
 }
