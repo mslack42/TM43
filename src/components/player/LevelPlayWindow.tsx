@@ -7,13 +7,16 @@ import {
   useGameplayContext,
 } from './context/GameplayContext'
 import { KeyboardControls } from './controls/KeyboardControls'
+import { PointerControls } from './controls/PointerControls'
 
 export function LevelPlayWindow({ level }: { level: MapDefinition }) {
   return (
     <MapContextProvider tileMode='Gameplay'>
       <GameplayContextProvider initialMap={level}>
         <KeyboardControls>
-          <GameWindow></GameWindow>
+          <PointerControls>
+            <GameWindow></GameWindow>
+          </PointerControls>
         </KeyboardControls>
       </GameplayContextProvider>
     </MapContextProvider>
