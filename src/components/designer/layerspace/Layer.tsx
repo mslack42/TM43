@@ -1,11 +1,12 @@
 'use client'
 
 import { Fragment } from 'react'
-import { ObjectTile } from '../mapspace/objects/ObjectTile'
-import { TerrainTile } from '../mapspace/terrain/TerrainTile'
-import { GridDefinition, ObjectDefinition } from '../mapspace/types'
-import { useDesignerCursor } from './context/cursor/DesignerCursorContext'
-import { useDesigner } from './context/DesignerContext'
+import { ObjectTile } from '../../mapspace/objects/ObjectTile'
+import { TerrainTile } from '../../mapspace/terrain/TerrainTile'
+import { GridDefinition, ObjectDefinition } from '../../mapspace/types'
+import { useDesignerCursor } from '../context/cursor/DesignerCursorContext'
+import { useDesigner } from '../context/DesignerContext'
+import { EditDropdown } from './EditDropdown'
 
 export const Layer = ({ layer }: { layer: GridDefinition }) => {
   const { mapDefinition } = useDesigner()
@@ -22,7 +23,10 @@ export const Layer = ({ layer }: { layer: GridDefinition }) => {
 
   return (
     <div className='bg-white'>
-      <div className='w-full'>{layer.gridId}</div>
+      <div className='flex w-full flex-row  justify-between space-x-2'>
+        <div className='text-nowrap'>{layer.gridId}</div>
+        <EditDropdown layer={layer} />
+      </div>
       <div className='relative' onPointerLeave={() => setCursorTile(null)}>
         <div
           className={

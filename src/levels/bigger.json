@@ -1,0 +1,721 @@
+{
+    "objects": [
+        {
+            "objectType": "Player",
+            "position": [
+                1,
+                1,
+                "ground2"
+            ]
+        },
+        {
+            "objectType": "Goal",
+            "position": [
+                3,
+                3,
+                "basement"
+            ]
+        },
+        {
+            "position": [
+                0,
+                0,
+                "ground2"
+            ],
+            "objectType": "Player"
+        },
+        {
+            "position": [
+                5,
+                4,
+                "ground2"
+            ],
+            "objectType": "Player"
+        },
+        {
+            "position": [
+                5,
+                6,
+                "ground2"
+            ],
+            "objectType": "Player"
+        },
+        {
+            "position": [
+                0,
+                5,
+                "ground2"
+            ],
+            "objectType": "Player"
+        },
+        {
+            "position": [
+                0,
+                1,
+                "ground2"
+            ],
+            "objectType": "Player"
+        },
+        {
+            "position": [
+                0,
+                0,
+                "basement"
+            ],
+            "objectType": "Player"
+        }
+    ],
+    "layers": [
+        {
+            "gridId": "ground2",
+            "grid": [
+                [
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    }
+                ],
+                [
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    }
+                ],
+                [
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    }
+                ],
+                [
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    }
+                ],
+                [
+                    {
+                        "terrainType": "Rock"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    }
+                ],
+                [
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    }
+                ],
+                [
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    }
+                ],
+                [
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    }
+                ],
+                [
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    }
+                ],
+                [
+                    {
+                        "terrainType": "Rock"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    }
+                ]
+            ]
+        },
+        {
+            "gridId": "basement",
+            "grid": [
+                [
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    }
+                ],
+                [
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    }
+                ],
+                [
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    }
+                ],
+                [
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ice"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    }
+                ],
+                [
+                    {
+                        "terrainType": "Rock"
+                    },
+                    {
+                        "terrainType": "Rock"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    }
+                ],
+                [
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    }
+                ],
+                [
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    }
+                ],
+                [
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    }
+                ],
+                [
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    }
+                ],
+                [
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    },
+                    {
+                        "terrainType": "Ground"
+                    }
+                ]
+            ]
+        }
+    ],
+    "name": "bigger"
+}
