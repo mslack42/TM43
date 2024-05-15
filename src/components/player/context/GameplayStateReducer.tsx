@@ -156,6 +156,9 @@ function tick(state: GameplayState): GameplayState {
   return newState
 }
 function playermove(state: GameplayState, direction: Direction): GameplayState {
+  if (state.objects.some(x => x.objectState !== 'Stopped')) {
+    return state
+  }
   let newState: GameplayState = {
     ...state,
     objects: state.objects.map(obj => {
