@@ -37,6 +37,7 @@ export const GameplayContext = createContext<GameplayContextData>({
       position: [0, 0],
     },
     activeObjectId: 0,
+    actionObjectType: 'Player',
   },
   ticker: false,
   gamestateDispatch: function (value: GameplayStateAction): void {
