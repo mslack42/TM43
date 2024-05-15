@@ -41,20 +41,22 @@ export const PointerControls = ({ children }: PropsWithChildren) => {
       <div id='scaler' style={{ scale: scale, transformOrigin: '0 0' }}>
         <div className='h-fit w-fit' ref={innerref}>
           {fakeDevice === 'GBA' && (
-            <div className='flex flex-row bg-purple-500'>
+            <div className='flex flex-row rounded-lg bg-purple-500'>
               <div className='flex flex-col justify-center p-2'>
                 <DPad />
               </div>
-              {content}
+              <div className='pb-8'>{content}</div>
               <div className='flex flex-col justify-center p-2'>
                 <ABButtons />
               </div>
             </div>
           )}
           {fakeDevice === 'GBC' && (
-            <div className='flex flex-col bg-yellow-500'>
-              {content}
-              <div className='flex flex-row justify-evenly pt-4'>
+            <div className='flex flex-col rounded-lg bg-yellow-500'>
+              <div className='p-4'>
+                <div>{content}</div>
+              </div>
+              <div className='flex min-h-60 flex-row justify-evenly pt-8 '>
                 <DPad />
                 <ABButtons />
               </div>
@@ -73,36 +75,40 @@ const DPad = () => {
       <button
         className='absolute bg-blue-400'
         style={{ top: 0, left: 32, height: 32, width: 32 }}
-        onClick={() =>
+        onClick={evt => {
+          evt.preventDefault()
           gamestateDispatch({ action: 'playermove', direction: 'North' })
-        }
+        }}
       >
         |
       </button>
       <button
         className='absolute  bg-blue-400'
         style={{ top: 32, left: 0, height: 32, width: 32 }}
-        onClick={() =>
+        onClick={evt => {
+          evt.preventDefault()
           gamestateDispatch({ action: 'playermove', direction: 'West' })
-        }
+        }}
       >
         --
       </button>
       <button
         className='absolute bg-blue-400'
         style={{ top: 32, right: 0, height: 32, width: 32 }}
-        onClick={() =>
+        onClick={evt => {
+          evt.preventDefault()
           gamestateDispatch({ action: 'playermove', direction: 'East' })
-        }
+        }}
       >
         --
       </button>
       <button
         className='absolute bg-blue-400'
         style={{ bottom: 0, left: 32, height: 32, width: 32 }}
-        onClick={() =>
+        onClick={evt => {
+          evt.preventDefault()
           gamestateDispatch({ action: 'playermove', direction: 'South' })
-        }
+        }}
       >
         |
       </button>
