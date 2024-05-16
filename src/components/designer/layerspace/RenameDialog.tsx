@@ -7,9 +7,13 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/common/Dialog'
+import {
+  useDesignerDispatch,
+  useDesignerSelector,
+} from '@/stores/designer/hooks'
 import { useState } from 'react'
 import { GridDefinition } from '../../mapspace/types'
-import { useDesigner } from '../context/DesignerContext'
+import { renameLayer } from './../../../stores/designer/mapSlice'
 
 export const RenameLayerDialog = ({
   layer,
@@ -20,27 +24,11 @@ export const RenameLayerDialog = ({
   open: boolean
   setOpen: (_b: boolean) => void
 }) => {
-  const { mapDefinition, setMapDefinition } = useDesigner()
+  const mapDefinition = useDesignerSelector(state => state.map.mapDefinition)
+  const dispatch = useDesignerDispatch()
   const [newName, setNewName] = useState(layer.gridId)
   const rename = (newName: string) => {
-    setMapDefinition({
-      ...mapDefinition,
-      layers: mapDefinition.layers.map(l => {
-        if (l.gridId !== layer.gridId) {
-          return l
-        }
-        return { ...l, gridId: newName }
-      }),
-      objects: mapDefinition.objects.map(o => {
-        if (o.position[2] !== layer.gridId) {
-          return o
-        }
-        return {
-          ...o,
-          position: [o.position[0], o.position[1], newName],
-        }
-      }),
-    })
+    dispatch(renameLayer({ oldName: layer.gridId, newName }))
   }
 
   return (

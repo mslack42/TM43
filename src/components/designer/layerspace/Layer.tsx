@@ -1,16 +1,22 @@
 'use client'
 
+import { updateCursorTile } from '@/stores/designer/designerCursorSlice'
+import {
+  useDesignerDispatch,
+  useDesignerSelector,
+} from '@/stores/designer/hooks'
 import { Fragment } from 'react'
 import { ObjectTile } from '../../mapspace/objects/ObjectTile'
 import { TerrainTile } from '../../mapspace/terrain/TerrainTile'
 import { GridDefinition, ObjectDefinition } from '../../mapspace/types'
-import { useDesignerCursor } from '../context/cursor/DesignerCursorContext'
-import { useDesigner } from '../context/DesignerContext'
 import { EditDropdown } from './EditDropdown'
 
 export const Layer = ({ layer }: { layer: GridDefinition }) => {
-  const { mapDefinition } = useDesigner()
-  const { cursorMode, setCursorTile } = useDesignerCursor()
+  const mapDefinition = useDesignerSelector(state => state.map.mapDefinition)
+  const cursorMode = useDesignerSelector(
+    state => state.designerCursor.cursorMode,
+  )
+  const dispatch = useDesignerDispatch()
 
   const objects: (ObjectDefinition | null)[][] = layer.grid.map(r =>
     r.map(c => null),
@@ -27,7 +33,10 @@ export const Layer = ({ layer }: { layer: GridDefinition }) => {
         <div className='text-nowrap'>{layer.gridId}</div>
         <EditDropdown layer={layer} />
       </div>
-      <div className='relative' onPointerLeave={() => setCursorTile(null)}>
+      <div
+        className='relative'
+        onPointerLeave={() => dispatch(updateCursorTile(null))}
+      >
         <div
           className={
             'flex flex-col ' +
@@ -37,7 +46,7 @@ export const Layer = ({ layer }: { layer: GridDefinition }) => {
           {layer.grid.map((r, j) => (
             <div key={j} className='flex flex-row'>
               {r.map((c, k) => (
-                <Fragment key={k}>
+                <Fragment key={`${k}-${j}`}>
                   <TerrainTile tileDef={c} position={[k, j, layer.gridId]} />
                 </Fragment>
               ))}
@@ -55,7 +64,7 @@ export const Layer = ({ layer }: { layer: GridDefinition }) => {
           {objects.map((r, j) => (
             <div key={j} className='flex flex-row'>
               {r.map((c, k) => (
-                <Fragment key={k}>
+                <Fragment key={`${k}-${j}`}>
                   <ObjectTile
                     objectType={c?.objectType ?? undefined}
                     position={[k, j, layer.gridId]}

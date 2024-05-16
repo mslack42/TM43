@@ -1,14 +1,22 @@
 'use client'
 
 import { CursorTileCapture } from '@/components/designer/common/CursorTileCapture'
-import { useDesignerCursor } from '@/components/designer/context/cursor/DesignerCursorContext'
-import { usePlaceMode } from '@/components/designer/context/cursor/PlaceModeContext'
-import { useSelectMode } from '@/components/designer/context/cursor/SelectModeContext'
+import {
+  useDesignerDispatch,
+  useDesignerSelector,
+} from '@/stores/designer/hooks'
+import { placeObject } from '@/stores/designer/mapSlice'
+import {
+  deselectObjectAtCursor,
+  selectObjectAtCursor,
+} from '@/stores/designer/selectModeSlice'
 import { XYLCoords } from '../../mapspace/types'
 
 type Props = { position: XYLCoords }
 export const ObjectInteractivity = ({ position }: Props) => {
-  const { cursorMode } = useDesignerCursor()
+  const cursorMode = useDesignerSelector(
+    state => state.designerCursor.cursorMode,
+  )
   return (
     <CursorTileCapture cursorTile={position}>
       {cursorMode === 'Place' ? (
@@ -23,27 +31,29 @@ export const ObjectInteractivity = ({ position }: Props) => {
 }
 
 const PlaceMode = () => {
-  const { placeObject } = usePlaceMode()
+  const dispatch = useDesignerDispatch()
+  const position = useDesignerSelector(state => state.designerCursor.cursorTile)
+  const objectType = useDesignerSelector(state => state.placeMode.objectType)
   return (
     <div
       className='h-full w-full '
       onPointerDown={() => {
-        placeObject()
+        position && dispatch(placeObject({ position, objectType }))
       }}
     ></div>
   )
 }
 
 const SelectMode = () => {
-  const { selectObject, deselectObject } = useSelectMode()
+  const dispatch = useDesignerDispatch()
   return (
     <div
       className='h-full w-full '
       onPointerDown={() => {
-        selectObject()
+        dispatch(selectObjectAtCursor())
       }}
       onPointerUp={() => {
-        deselectObject()
+        dispatch(deselectObjectAtCursor())
       }}
     ></div>
   )

@@ -1,15 +1,15 @@
+import { useDesignerSelector } from '@/stores/designer/hooks'
 import {
   Dialog,
   DialogContent,
   DialogFooter,
   DialogHeader,
 } from '../../common/Dialog'
-import { useDesigner } from '../context/DesignerContext'
 import { useDesignerDialogs } from '../context/dialog/DesignerDialogContext'
 
 export function ExportDialog() {
   const { setOpenDialog, openDialog } = useDesignerDialogs()
-  const { mapDefinition } = useDesigner()
+  const mapDefinition = useDesignerSelector(state => state.map.mapDefinition)
   return (
     <Dialog open={openDialog === 'Export'}>
       <DialogContent>

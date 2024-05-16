@@ -1,21 +1,23 @@
 'use client'
+import { useDesignerSelector } from '@/stores/designer/hooks'
 import { useEffect, useState } from 'react'
+import { Provider } from 'react-redux'
 import { TransformComponent, TransformWrapper } from 'react-zoom-pan-pinch'
+import { store } from './../../stores/designer/store'
 import { DesignerContextProvider } from './context/DesignerContext'
-
-import { useDesignerCursor } from './context/cursor/DesignerCursorContext'
 import { DesignerSideboard } from './controls/DesignerSideboard'
-
-import { LayerGrid } from './LayerGrid'
 import { ExportDialog } from './dialog/ExportDialog'
 import { ImportDialog } from './dialog/ImportDialog'
+import { LayerGrid } from './LayerGrid'
 
 export const DesignerWorkspace = () => {
   return (
     <div className='relative min-h-screen w-full overflow-hidden bg-black'>
-      <DesignerContextProvider>
-        <PanZoomWorkspace />
-      </DesignerContextProvider>
+      <Provider store={store}>
+        <DesignerContextProvider>
+          <PanZoomWorkspace />
+        </DesignerContextProvider>
+      </Provider>
     </div>
   )
 }
@@ -23,7 +25,9 @@ export const DesignerWorkspace = () => {
 function PanZoomWorkspace() {
   const [ready, setReady] = useState(false)
   const [windowDims, setWindowDims] = useState([0, 0])
-  const { cursorMode } = useDesignerCursor()
+  const cursorMode = useDesignerSelector(
+    state => state.designerCursor.cursorMode,
+  )
 
   useEffect(() => {
     function handleResize() {

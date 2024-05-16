@@ -1,16 +1,24 @@
 'use client'
 
-import { CursorTileCapture } from '@/components/designer/common/CursorTileCapture'
-import { useDesignerCursor } from '@/components/designer/context/cursor/DesignerCursorContext'
-import { usePaintMode } from '@/components/designer/context/cursor/PaintModeContext'
+import {
+  useDesignerDispatch,
+  useDesignerSelector,
+} from '@/stores/designer/hooks'
+import {
+  paintTileAtCursor,
+  updateIsBrushDown,
+} from '@/stores/designer/paintModeSlice'
 import { XYLCoords } from '../../mapspace/types'
+import { CursorTileCapture } from '../common/CursorTileCapture'
 
 type Props = {
   position: XYLCoords
 }
 
 export const TileInteractivity = ({ position }: Props) => {
-  const { cursorMode } = useDesignerCursor()
+  const cursorMode = useDesignerSelector(
+    state => state.designerCursor.cursorMode,
+  )
   return (
     <CursorTileCapture cursorTile={position}>
       {cursorMode === 'Paint' ? (
@@ -23,32 +31,30 @@ export const TileInteractivity = ({ position }: Props) => {
 }
 
 const PaintMode = () => {
-  const { paintTile, isBrushDown, setIsBrushDown } = usePaintMode()
+  const dispatch = useDesignerDispatch()
+  const paintTile = () => {
+    dispatch(paintTileAtCursor())
+  }
+
   return (
     <div
       className='h-full w-full '
       onPointerDown={() => {
-        setIsBrushDown(true)
+        dispatch(updateIsBrushDown(true))
         paintTile()
       }}
       onPointerUp={() => {
-        setIsBrushDown(false)
+        dispatch(updateIsBrushDown(false))
       }}
-      onPointerMove={() => {
-        if (isBrushDown) {
-          paintTile()
-        }
-      }}
+      // onPointerMove={() => {
+      //   paintTile()
+      // }}
       onPointerEnter={() => {
-        if (isBrushDown) {
-          paintTile()
-        }
+        paintTile()
       }}
-      onPointerLeave={() => {
-        if (isBrushDown) {
-          paintTile()
-        }
-      }}
+      // onPointerLeave={() => {
+      //   paintTile()
+      // }}
     ></div>
   )
 }

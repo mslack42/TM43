@@ -7,9 +7,10 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/common/Dialog'
+import { useDesignerDispatch } from '@/stores/designer/hooks'
+import { resizeLayer } from '@/stores/designer/mapSlice'
 import { useState } from 'react'
 import { GridDefinition } from '../../mapspace/types'
-import { useDesigner } from '../context/DesignerContext'
 export const ResizeDialog = ({
   layer,
   open,
@@ -19,38 +20,13 @@ export const ResizeDialog = ({
   open: boolean
   setOpen: (_b: boolean) => void
 }) => {
-  const { mapDefinition, setMapDefinition } = useDesigner()
+  const dispatch = useDesignerDispatch()
   const oldX = layer.grid[0].length
   const oldY = layer.grid.length
   const [newX, setNewX] = useState(oldX)
   const [newY, setNewY] = useState(oldY)
   const resize = (x: number, y: number) => {
-    setMapDefinition({
-      ...mapDefinition,
-      layers: mapDefinition.layers.map(l => {
-        if (l.gridId !== layer.gridId) {
-          return l
-        }
-        const newGrid = Array(y)
-          .fill(null)
-          .map(r =>
-            Array(x)
-              .fill(null)
-              .map(c => c),
-          )
-        for (let j = 0; j < newY; j++) {
-          for (let i = 0; i < newX; i++) {
-            if (i < oldX && j < oldY) {
-              newGrid[j][i] = layer.grid[j][i]
-            } else {
-              newGrid[j][i] = layer.grid[oldY - 1][oldX - 1]
-            }
-          }
-        }
-
-        return { ...l, grid: newGrid }
-      }),
-    })
+    dispatch(resizeLayer({ gridId: layer.gridId, newX, newY }))
   }
 
   return (

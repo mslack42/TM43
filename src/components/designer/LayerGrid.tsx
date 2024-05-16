@@ -1,27 +1,29 @@
 'use client'
 
-import { usePaintMode } from './context/cursor/PaintModeContext'
-import { useSelectMode } from './context/cursor/SelectModeContext'
-import { useDesigner } from './context/DesignerContext'
+import {
+  useDesignerDispatch,
+  useDesignerSelector,
+} from '@/stores/designer/hooks'
+import { updateIsBrushDown } from '@/stores/designer/paintModeSlice'
+import { unselectObject } from '@/stores/designer/selectModeSlice'
 import { Layer } from './layerspace/Layer'
 
 export const LayerGrid = () => {
-  const { mapDefinition } = useDesigner()
-  const { setIsBrushDown } = usePaintMode()
-  const { unselectObject } = useSelectMode()
+  const mapDefinition = useDesignerSelector(state => state.map.mapDefinition)
+  const dispatch = useDesignerDispatch()
 
   return (
     <div
       className='flex flex-row gap-10 p-96'
       onPointerUp={() => {
-        setIsBrushDown(false)
+        dispatch(updateIsBrushDown(false))
       }}
       onPointerLeave={() => {
-        unselectObject()
+        dispatch(unselectObject())
       }}
     >
-      {mapDefinition.layers.map((l, i) => (
-        <Layer layer={l} key={i} />
+      {mapDefinition.layers.map(l => (
+        <Layer layer={l} key={l.gridId} />
       ))}
     </div>
   )
