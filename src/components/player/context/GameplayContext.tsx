@@ -20,7 +20,6 @@ export type GameplayContextData = {
   initialMap: MapDefinition
   gamestate: GameplayState
   gamestateDispatch: Dispatch<GameplayStateAction>
-  ticker: boolean
 }
 
 export const GameplayContext = createContext<GameplayContextData>({
@@ -39,7 +38,6 @@ export const GameplayContext = createContext<GameplayContextData>({
     activeObjectId: 0,
     actionObjectType: 'Player',
   },
-  ticker: false,
   gamestateDispatch: function (value: GameplayStateAction): void {
     throw new Error('Function not implemented.')
   },
@@ -78,7 +76,6 @@ export function GameplayContextProvider({
 
   const value: GameplayContextData = {
     initialMap,
-    ticker,
     gamestate: actualGamestate,
     gamestateDispatch: actualGamestateDispatch,
   }

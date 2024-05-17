@@ -2,6 +2,7 @@
 import { MapContextProvider } from '@/components/mapspace/context/MapContext'
 import { MapDefinition } from '@/components/mapspace/types'
 import { LevelPlayer } from '@/components/player/LevelPlayer'
+import { memo } from 'react'
 import {
   GameplayContextProvider,
   useGameplayContext,
@@ -43,8 +44,10 @@ function GameWindow() {
           top: cameraTranslation[1],
         }}
       >
-        <LevelPlayer />
+        <MLevelPlayer />
       </div>
     </div>
   )
 }
+
+const MLevelPlayer = memo(LevelPlayer)
