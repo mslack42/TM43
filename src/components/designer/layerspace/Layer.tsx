@@ -7,8 +7,8 @@ import {
 } from '@/stores/designer/hooks'
 import { Fragment, memo, useMemo } from 'react'
 import { ObjectTile } from '../../mapspace/objects/ObjectTile'
-import { TerrainTile } from '../../mapspace/terrain/TerrainTile'
 import { ObjectDefinition } from '../../mapspace/types'
+import { DesignTerrainTile } from '../mapspace/DesignTerrainTile'
 import { EditDropdown } from './EditDropdown'
 import { ObjectCursorWrapper } from './ObjectCursorWrapper'
 import { TerrainCursorWrapper } from './TerrainCursorWrapper'
@@ -108,5 +108,5 @@ const TerrainGrid = ({
     </>
   )
 }
-const MTerrainTile = memo(TerrainTile)
+const MTerrainTile = memo(DesignTerrainTile)
 const MTerrainGrid = memo(TerrainGrid)
