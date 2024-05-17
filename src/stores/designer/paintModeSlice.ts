@@ -28,13 +28,11 @@ export const paintModeSlice = createSlice({
 export const paintTileAtCursor = (): DesignerThunk => (dispatch, getState) => {
   const state = getState()
   if (!state.paintMode.isBrushDown) {
-    console.log('no pb)')
     return
   }
   const position = state.designerCursor.cursorTile
   const newTerrain = state.paintMode.paintTerrainType
   if (!position) {
-    console.log('no pos')
     return
   }
   if (
@@ -42,7 +40,6 @@ export const paintTileAtCursor = (): DesignerThunk => (dispatch, getState) => {
       .filter(l => l.gridId === position[2])
       .some(l => l.grid[position[1]][position[0]].terrainType === newTerrain)
   ) {
-    console.log('just no')
     return
   }
   dispatch(placeTerrainTile({ newTerrain, position }))

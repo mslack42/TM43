@@ -12,30 +12,32 @@ import {
   useDesignerSelector,
 } from '@/stores/designer/hooks'
 import { useState } from 'react'
-import { GridDefinition } from '../../mapspace/types'
 import { renameLayer } from './../../../stores/designer/mapSlice'
 
 export const RenameLayerDialog = ({
-  layer,
+  layerId,
   open,
   setOpen,
 }: {
-  layer: GridDefinition
+  layerId: string
   open: boolean
   setOpen: (_b: boolean) => void
 }) => {
-  const mapDefinition = useDesignerSelector(state => state.map.mapDefinition)
+  const layerIds = useDesignerSelector(
+    state => state.map.mapDefinition.layers.map(l => l.gridId),
+    (a, b) => a.length === b.length && a.every((v, i) => v === b[i]),
+  )
   const dispatch = useDesignerDispatch()
-  const [newName, setNewName] = useState(layer.gridId)
+  const [newName, setNewName] = useState(layerId)
   const rename = (newName: string) => {
-    dispatch(renameLayer({ oldName: layer.gridId, newName }))
+    dispatch(renameLayer({ oldName: layerId, newName }))
   }
 
   return (
     <Dialog open={open} onOpenChange={ev => setOpen(ev)}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>{`Rename "${layer.gridId}"`}</DialogTitle>
+          <DialogTitle>{`Rename "${layerId}"`}</DialogTitle>
         </DialogHeader>
         <input
           type='text'
@@ -52,7 +54,7 @@ export const RenameLayerDialog = ({
               rename(newName)
               setOpen(false)
             }}
-            disabled={mapDefinition.layers.map(l => l.gridId).includes(newName)}
+            disabled={layerIds.includes(newName)}
           >
             Submit
           </button>

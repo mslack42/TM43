@@ -9,7 +9,13 @@ import { unselectObject } from '@/stores/designer/selectModeSlice'
 import { Layer } from './layerspace/Layer'
 
 export const LayerGrid = () => {
-  const mapDefinition = useDesignerSelector(state => state.map.mapDefinition)
+  const layerCount = useDesignerSelector(
+    state => state.map.mapDefinition.layers.length,
+  )
+  const layerIds = Array(layerCount)
+    .fill(null)
+    .map((_, i) => i)
+
   const dispatch = useDesignerDispatch()
 
   return (
@@ -22,8 +28,8 @@ export const LayerGrid = () => {
         dispatch(unselectObject())
       }}
     >
-      {mapDefinition.layers.map(l => (
-        <Layer layer={l} key={l.gridId} />
+      {layerIds.map(l => (
+        <Layer layerIndex={l} key={l} />
       ))}
     </div>
   )

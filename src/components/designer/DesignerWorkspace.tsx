@@ -1,6 +1,6 @@
 'use client'
 import { useDesignerSelector } from '@/stores/designer/hooks'
-import { useEffect, useState } from 'react'
+import { memo, useEffect, useState } from 'react'
 import { Provider } from 'react-redux'
 import { TransformComponent, TransformWrapper } from 'react-zoom-pan-pinch'
 import { store } from './../../stores/designer/store'
@@ -61,7 +61,7 @@ function PanZoomWorkspace() {
                 height: windowDims[1],
               }}
             >
-              <LayerGrid />
+              <MLayerGrid />
             </TransformComponent>
           </TransformWrapper>
           <DesignerSideboard />
@@ -72,3 +72,5 @@ function PanZoomWorkspace() {
     </>
   )
 }
+
+const MLayerGrid = memo(LayerGrid)

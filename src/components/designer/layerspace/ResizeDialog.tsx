@@ -7,33 +7,43 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/common/Dialog'
-import { useDesignerDispatch } from '@/stores/designer/hooks'
+import {
+  useDesignerDispatch,
+  useDesignerSelector,
+} from '@/stores/designer/hooks'
 import { resizeLayer } from '@/stores/designer/mapSlice'
 import { useState } from 'react'
-import { GridDefinition } from '../../mapspace/types'
 export const ResizeDialog = ({
-  layer,
+  layerId,
   open,
   setOpen,
 }: {
-  layer: GridDefinition
+  layerId: string
   open: boolean
   setOpen: (_b: boolean) => void
 }) => {
   const dispatch = useDesignerDispatch()
-  const oldX = layer.grid[0].length
-  const oldY = layer.grid.length
+  const oldX = useDesignerSelector(
+    state =>
+      state.map.mapDefinition.layers.filter(l => l.gridId === layerId)[0]
+        .grid[0].length,
+  )
+  const oldY = useDesignerSelector(
+    state =>
+      state.map.mapDefinition.layers.filter(l => l.gridId === layerId)[0].grid
+        .length,
+  )
   const [newX, setNewX] = useState(oldX)
   const [newY, setNewY] = useState(oldY)
   const resize = (x: number, y: number) => {
-    dispatch(resizeLayer({ gridId: layer.gridId, newX, newY }))
+    dispatch(resizeLayer({ gridId: layerId, newX, newY }))
   }
 
   return (
     <Dialog open={open} onOpenChange={ev => setOpen(ev)}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>{`Resize "${layer.gridId}"`}</DialogTitle>
+          <DialogTitle>{`Resize "${layerId}"`}</DialogTitle>
         </DialogHeader>
         <input
           type='number'
